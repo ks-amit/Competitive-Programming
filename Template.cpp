@@ -11,7 +11,7 @@ using namespace std;
 #define speed ios::sync_with_stdio(false)
 
 
-// FAST I/O
+// FAST I/O - INTEGER SCAN
 
 void fastscan(int &x){
 	register int c = getchar_unlocked();
