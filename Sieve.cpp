@@ -33,6 +33,11 @@ void sieve(int N){
 			}
 		}
 	}
+	for(i = 2; i <= N; i++){
+		if(prime[i] == 0){
+			pr.push_back(i);
+		}
+	}
 }
 
 // NUMBER OF DIVISORS USING SIEVE
@@ -112,6 +117,28 @@ void sieve1(int N){
 		}
 		for(j = 0; j < pr.size() && pr[j] <= lprime[i] && i * pr[j] <= N; j++){
 			lprime[i * pr[j]] = pr[j];
+		}
+	}
+}
+
+// SEGMENTED SIEVE - ( HIGH - LOW <= 10^6 )
+
+void segSieve(int low, int high){
+	int i, j;
+	memset(segPrime, 0, sizeof(segPrime));
+
+	for(i = 0; i < pr.size() && pr[i] * pr[i] <= high; i++){
+		int L = floor(low / pr[i]) * pr[i];
+		if(L < low){
+			L += pr[i];
+		}
+		for(j = L; j <= high; j += pr[i]){
+			if(pr[i] != j){
+				segPrime[j - low] = 1;
+			}
+		}
+		if(low == 1){
+            segPrime[0] = 1;
 		}
 	}
 }
