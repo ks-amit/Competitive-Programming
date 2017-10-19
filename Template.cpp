@@ -55,6 +55,25 @@ ll egcd(ll a, ll b){
 	}
 }
 
+// EULER TOTIENT FUNCTION
+
+int phi[N];
+
+void etf(int n){
+	int i, j;
+	for(i = 0; i <= n; i++){
+		phi[i] = i;
+	}
+	for(i = 2; i <= n; i++){
+		if(phi[i] == i){
+			for(j = i; j <= n; j += i){
+				phi[j] /= i;
+				phi[j] *= (i - 1);
+			}
+		}
+	}
+}
+
 // POWER FUNCTION ( BINARY EXPONENTIATION ) - CALCULATES (a ^ b) % c
 
 ll bin(ll a, ll b, ll c){
@@ -149,6 +168,28 @@ bool millerrabin(ll n){
 	return true;
 }
 
+// SOLUTIONS OF LINEAR DIOPHANTINE EQUATIONS ( Non Negative )
+
+ll lde(ll a, ll b, ll c){
+	ll gcd = egcd(a, b);
+	if(c % gcd != 0){
+		return 0;
+	}
+	else if(c == 0){
+		return 1;
+	}
+	else{
+		long double p = (long double)(-x * c) / b;
+		long double q = (long double)(y * c) / a;
+		if(q < p){
+			long double temp = p;
+			p = q;
+			q = temp;
+		}
+		return floor(q) - ceil(p) + 1;
+	}
+}
+
 // DISJOINT SUBSET
 
 // two arrays arr[] and size[] of size <n> required
@@ -224,6 +265,39 @@ void kmp(string text, string pattern){ // search for pattern in text
 			}
 			else{
 				i++;
+			}
+		}
+	}
+}
+
+// Z ALGORITHM 
+
+int z[N];
+
+void buildZA(string s){
+	int l = 0, r = 0, i, k;
+	int n = s.size();
+	z[0] = 0;
+	for(i = 1; i < n; i++){
+		if(i > r){
+			l = i; r = i;
+			while(r < n && s[r - l] == s[r]){
+				r++;
+			}
+			z[i] = r - l;
+		}
+		else{
+			k = i - l;
+			if(z[k] < r - i + 1){
+				z[i] = z[k];
+			}
+			else{
+				l = i;
+				while(r < n && s[r - l] == s[r]){
+					r++;
+				}
+				z[i] = r - l;
+				r--;
 			}
 		}
 	}
