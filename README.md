@@ -1,7 +1,7 @@
 # Competitive-Programming
 All you need to save time :p 
 
-CONTENTS OF Template.cpp :
+# CONTENTS OF Template.cpp :
 
    1. FAST I/O to scan Integers
    2. GCD - EUCLID'S and EXTENDED EUCLID'S ALGORITHM
