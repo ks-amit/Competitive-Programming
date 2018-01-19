@@ -14,3 +14,4 @@ All you need to save time :p
    9. DISJOINT SUBSET (DS) - setup, union and root
    10. KMP STRING MATCH ALGORITHM
    11. Z ALGORITHM
+   12. MATRIX MULTIPLICATION
