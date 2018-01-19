@@ -6,7 +6,11 @@ using namespace std;
 #define sl(x) scanf("%lld", &x)
 #define pl(x) printf("%lld\n", x)
 #define pi(x) printf("%d\n", x)
+#define gu getchar_unlocked
+#define pu putchar_unlocked
 #define setbits __builtin_popcountll
+#define pb push_back
+#define mp make_pair
 #define MOD 1000000007
 #define speed ios::sync_with_stdio(false)
 
@@ -15,13 +19,52 @@ const int N = 100005;
 
 // FAST I/O
 
-void fastscan(int &x){
-	register int c = getchar_unlocked();
-	x = 0;
-	for(; (c<48 || c>57); c = getchar_unlocked());
-	for(; c>47 && c<58; c = getchar_unlocked()){
-		x = (x<<1) + (x<<3) + c - 48;
-	}
+void fastscan(int &n){
+    int sign = 1;
+    n = 0;
+    char c = gu();
+    while( c < '0' || c > '9' ){
+        if( c == '-' ) sign = -1;
+        c = gu();
+    }
+    while( c >= '0' && c <= '9' ) n = (n<<3) + (n<<1) + c - '0', c = gu();  n = n * sign;
+}
+    
+void fastscan(ll &n){
+    int sign = 1;
+    n = 0;
+    char c = gu();
+    while( c < '0' || c > '9' ){
+        if( c == '-' )
+        sign = -1;
+        c = gu();
+    }
+    while( c >= '0' && c <= '9' ) n = (n<<3) + (n<<1) + c - '0', c = gu();  n = n * (ll)(sign);
+}
+
+void print(int n){
+    if(n < 0){
+        n = -n; pu('-');
+    }
+    int i = 10;
+    char o[10];
+    do{o[--i] = (n % 10) + '0'; n /= 10;} while(n);
+    do{pu(o[i]);} while(++i < 10);
+}
+
+void lprint(ll n){
+    if(n < 0LL){
+        n = -n; pu('-');
+    }
+    int i = 21;
+    char o[21];
+    do{o[--i] = (n % 10LL) + '0'; n /= 10LL;} while(n);
+    do{pu(o[i]);} while(++i < 21);
+}
+
+void sprint(const char a[]){
+        const char *p = a;
+        while(*p)pu(*p++);
 }
 
 // GCD - EUCLID'S ALGORITHM
@@ -299,6 +342,23 @@ void buildZA(string s){
 				z[i] = r - l;
 				r--;
 			}
+		}
+	}
+}
+
+// MATRIX MULTIPLICATION MODULO 'c'
+
+// mat1[m][n], mat2[n][p], res[m][p]
+// res is the result matrix
+
+void matmul(ll mat1[m][n], ll mat2[n][p], ll res[m][p], int m, int n, int p, ll c){
+	for(int i = 0; i < m; i++){
+		for(int j = 0; j < p; j++){
+			ll num = 0;
+			for(int k = 0; k < n; k++){
+				num += ((mat1[i][k] % c) * (mat2[k][j] % c)) % c;
+			}
+			res[i][j] = num % c;
 		}
 	}
 }
