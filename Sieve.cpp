@@ -67,10 +67,10 @@ void sieve(int N){
 // LOWEST PRIME FACTOR USING SIEVE
 
 void sieve(int N){
-	int i, j;
+	ll i, j;
 	memset(lprime, 0, sizeof(lprime));
 	lprime[1] = 0;
-	for(i = 2; i * i <= N; i++){
+	for(i = 2; i <= N; i++){
 		if(lprime[i] == 0){
             lprime[i] = i;
 			for(j = i * i; j <= N; j += i){
@@ -142,4 +142,3 @@ void segSieve(int low, int high){
 		}
 	}
 }
-
