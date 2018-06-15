@@ -73,5 +73,8 @@ int lca(int A, int B){
 }
 
 int main(){
-	
+	// take input in graph[], set parent[] to -1, depth[] and visited[] to 0
+	dfs(root);
+	setup();
+	// print lca(node1, node2);
 }
