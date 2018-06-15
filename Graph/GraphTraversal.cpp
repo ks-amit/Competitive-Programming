@@ -29,6 +29,8 @@ void DFS(int s){
 			visited[graph[s][i]] = 1;
 			
 			// PRE-PROCESS THE CHILD OF THE CURRENT VERTEX
+			// parent[graph[s][i]] = s;
+			// depth[graph[s][i]] = depth[s] + 1;
 			
 			DFS(graph[s][i]);
 		}
