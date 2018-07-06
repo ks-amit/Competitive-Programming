@@ -16,20 +16,3 @@ All you need to save time :p
    11. Z ALGORITHM
    12. MATRIX MULTIPLICATION
    
-# Macros
-
-   #include<bits/stdc++.h>
-   using namespace std;
-   #define ll long long
-   #define si(x) scanf("%d", &x)
-   #define sc(x) scanf("%c", &x)
-   #define sl(x) scanf("%lld", &x)
-   #define pl(x) printf("%lld\n", x)
-   #define pi(x) printf("%d\n", x)
-   #define gu getchar_unlocked
-   #define pu putchar_unlocked
-   #define setbits __builtin_popcountll
-   #define pb push_back
-   #define mp make_pair
-   #define MOD 1000000007
-   #define speed ios::sync_with_stdio(false)
